@@ -2,10 +2,18 @@ import abc
 
 import numpy as np
 
+# TODO @Waldek split this file into subdirectory:
+# model/
+# |__ base.py
+# |__ gaussian.py
+# |__ multinomial.py
 
 class NB(abc.ABC):
+    # TODO @Waldek rename it to NaiveBayes
     @abc.abstractmethod
-    def fit(self, X, y):
+    def fit(self, X, y): 
+        # TODO @Waldek add typehints, e.g. def fit(self, X: np.ndarray, y: np.ndarray) -> 'NaiveBayes':
+        # TODO @Waldek add docstrings EVERYWHERE :D
         pass
 
     @abc.abstractmethod
@@ -23,7 +31,8 @@ class GaussianNB(NB):
     def fit(self, X, y):
         # 1 fill self.class_distrib based on y
         # np.unique(return_counts=True)
-        # (optional) convert to logs
+        # (optional) convert to logs 
+        # TODO @Waldek what (optional) means here? If it can vary, you can add if statement
         self.X = X
         self.y = y
         self.classes, y_counts =np.unique(self.y,return_counts=True)
@@ -97,6 +106,7 @@ class MultinomialNB(NB):
     def predict(self, X_test):
         X_test_digitize = np.empty(X_test.shape)
         for p in range(X_test.shape[1]):
+            # TODO @Waldek use more meaningful variable name than "p"
             X_test_digitize[:,p] = np.digitize(X_test[:,p], np.linspace(self.mins[p],self.maxs[p],self.bins))
         X_test_digitize= X_test_digitize.astype(int)
 
