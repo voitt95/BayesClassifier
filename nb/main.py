@@ -1,7 +1,8 @@
 from evaluation import accuracy_score, confusion_matrix
 from naive_bayes import GaussianNB, MultinomialNB
 from preprocessing import Preprocessing
-
+# TODO @Waldek I would not create this file, your code is rather library and this stuff below is rather some experiment. 
+# You can add it as a separate notebook
 def main():
     prp = Preprocessing()
     prp.get_datasets_annotations()
