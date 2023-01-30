@@ -8,6 +8,8 @@ from hu_moments import hu_moments
 
 
 class Preprocessing:
+    # TODO @Waldek As I understood, this is dataset-specific preprocessing. 
+    # It might be worthy to describe which dataset you are capable of preprocessing with this class
     def __init__(self,
                 train_path = "Datasets\TsignRecgTrain4170Annotation.txt",
                 test_path = "Datasets\TsignRecgTest1994Annotation.txt"):
@@ -36,6 +38,7 @@ class Preprocessing:
         return df_train_ant, df_test_ant
 
     def crop_image(self,idx,dataset="Train", show=False):
+        # TODO @Waldek is this method used? I cannot find it's usage in your code
         image = Image.open(os.path.join("Datasets",dataset,idx))
         if dataset =="Test":
             cropped_image = image.crop(self.df_test_ant[["x1","y1","x2","y2"]].loc[idx].to_list())
